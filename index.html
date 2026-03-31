@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portail Étudiant ESP</title>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Syne:wght@400;700;800&display=swap" rel="stylesheet">
+
+    <!-- Feuilles de style -->
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/login.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/profil.css">
+    <link rel="stylesheet" href="css/resultats.css">
+    <link rel="stylesheet" href="css/emploi.css">
+    <link rel="stylesheet" href="css/modales.css">
+</head>
+<body>
+
+<!-- ===== PAGE LOGIN ===== -->
+<div id="loginPage">
+    <div class="login-card">
+        <div class="login-logo">ESP Portail</div>
+        <div class="login-sub">École Supérieure Polytechnique — UCAD</div>
+        <label class="login-label">Adresse Email</label>
+        <input type="email" id="emailInput" class="login-input" placeholder="tuser@esp.sn"
+               onkeydown="if(event.key==='Enter') login()">
+        <label class="login-label">Mot de passe</label>
+        <input type="password" id="pwdInput" class="login-input" placeholder="••••••••"
+               onkeydown="if(event.key==='Enter') login()">
+        <button class="login-btn" onclick="login()">Se connecter</button>
+        <div id="loginError"></div>
+    </div>
+</div>
+
+<!-- ===== APP SHELL ===== -->
+<div id="appShell">
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <div class="sidebar-brand">
+            <div class="brand-name">ESP Portail</div>
+            <div class="brand-tag">Université Cheikh Anta Diop</div>
+        </div>
+
+        <div class="sidebar-profile">
+            <div class="sidebar-avatar" id="sidebarAvatar">T</div>
+            <div>
+                <div class="sidebar-name" id="sidebarName">Test User</div>
+                <div class="sidebar-email" id="sidebarEmail">tuser@esp.sn</div>
+            </div>
+        </div>
+
+        <nav class="sidebar-nav">
+            <div class="nav-item active" id="navProfil" onclick="showSection('profil')">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <circle cx="12" cy="8" r="4"/>
+                    <path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/>
+                </svg>
+                Profil
+            </div>
+            <div class="nav-item" id="navResultats" onclick="showSection('resultats')">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" d="M9 17V7m0 10a2 2 0 01-2 2H5a2 2 0 01-2-2V7a2 2 0 012-2h2a2 2 0 012 2m0 10a2 2 0 002 2h2a2 2 0 002-2M9 7a2 2 0 012-2h2a2 2 0 012 2m0 10V7"/>
+                </svg>
+                Résultats
+            </div>
+            <div class="nav-item" id="navEmploi" onclick="showSection('emploi')">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <rect x="3" y="4" width="18" height="18" rx="2"/>
+                    <path d="M16 2v4M8 2v4M3 10h18"/>
+                </svg>
+                Emploi du Temps
+            </div>
+        </nav>
+
+        <div class="sidebar-footer">
+            <button class="logout-btn" onclick="logout()">
+                <svg width="15" height="15" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"/>
+                </svg>
+                Déconnexion
+            </button>
+        </div>
+    </aside>
+
+    <!-- Contenu principal -->
+    <main class="main-content">
+
+        <!-- ===== SECTION PROFIL ===== -->
+        <section id="sectionProfil" class="section active">
+            <div class="page-title">Mon Profil</div>
+
+            <div class="profile-hero">
+                <div class="profile-photo-wrap">
+                    <div class="profile-photo" id="profilePhotoDiv"
+                         onclick="document.getElementById('photoInput').click()">
+                        <span id="photoInitials">T</span>
+                        <img id="photoPreview" src="" alt="" style="display:none;">
+                    </div>
+                    <div class="photo-edit-btn" onclick="document.getElementById('photoInput').click()">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"/>
+                        </svg>
+                    </div>
+                    <input type="file" id="photoInput" accept="image/*" onchange="changerPhoto(event)">
+                </div>
+
+                <div class="profile-info">
+                    <div class="profile-fullname" id="profileFullName">Test User</div>
+                    <div class="profile-badge">
+                        <svg width="12" height="12" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M10.394 2.08a1 1 0 00-.788 0l-7 3a1 1 0 000 1.84L5.25 8.051a.999.999 0 01.356-.257l4-1.714a1 1 0 11.788 1.838L7.667 9.088l1.94.831a1 1 0 00.787 0l7-3a1 1 0 000-1.838l-7-3z"/>
+                        </svg>
+                        LSRT-3A — Licence 3
+                    </div>
+                    <div class="profile-meta">
+                        <div class="profile-meta-item">
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                            </svg>
+                            <span id="profileEmailDisplay">tuser@esp.sn</span>
+                        </div>
+                        <div class="profile-meta-item">
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" d="M10 6H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V8a2 2 0 00-2-2h-5m-4 0V5a2 2 0 114 0v1m-4 0a2 2 0 104 0"/>
+                            </svg>
+                            <span>N° Étudiant : ESP-2024-0471</span>
+                        </div>
+                        <div class="profile-meta-item">
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+                                <circle cx="12" cy="11" r="3"/>
+                            </svg>
+                            <span>Dakar, Sénégal</span>
+                        </div>
+                    </div>
+                </div>
+
+                <button class="edit-profile-btn" onclick="ouvrirEditProfil()">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/>
+                    </svg>
+                    Modifier
+                </button>
+            </div>
+
+            <div class="profile-cards">
+                <div class="info-card">
+                    <div class="info-card-title">Informations Personnelles</div>
+                    <div class="info-field">
+                        <div class="info-field-label">Prénom</div>
+                        <div class="info-field-value" id="cardPrenom">Test</div>
+                    </div>
+                    <div class="info-field">
+                        <div class="info-field-label">Nom</div>
+                        <div class="info-field-value" id="cardNom">User</div>
+                    </div>
+                    <div class="info-field">
+                        <div class="info-field-label">Email</div>
+                        <div class="info-field-value" id="cardEmail">tuser@esp.sn</div>
+                    </div>
+                </div>
+                <div class="info-card">
+                    <div class="info-card-title">Scolarité</div>
+                    <div class="info-field">
+                        <div class="info-field-label">Établissement</div>
+                        <div class="info-field-value">École Supérieure Polytechnique</div>
+                    </div>
+                    <div class="info-field">
+                        <div class="info-field-label">Filière</div>
+                        <div class="info-field-value">Systèmes Réseaux &amp; Télécoms</div>
+                    </div>
+                    <div class="info-field">
+                        <div class="info-field-label">Semestre actuel</div>
+                        <div class="info-field-value">Semestre 6</div>
+                    </div>
+                </div>
+                <div class="info-card">
+                    <div class="info-card-title">Statistiques</div>
+                    <div class="info-field">
+                        <div class="info-field-label">Moyenne Générale</div>
+                        <div class="info-field-value" id="cardMoyenne" style="color:var(--accent); font-size:1.1rem;">—</div>
+                    </div>
+                    <div class="info-field">
+                        <div class="info-field-label">Modules validés</div>
+                        <div class="info-field-value" id="cardValides">—</div>
+                    </div>
+                    <div class="info-field">
+                        <div class="info-field-label">Appréciation</div>
+                        <div class="info-field-value" id="cardAppreciation">—</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== SECTION RÉSULTATS ===== -->
+        <section id="sectionResultats" class="section">
+            <div class="page-title">Mes Résultats — S6</div>
+            <table class="results-table">
+                <thead>
+                    <tr>
+                        <th>Matière</th>
+                        <th>Coeff.</th>
+                        <th>Note /20</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody id="notesTableBody"></tbody>
+            </table>
+            <div class="moyenne-bar">
+                <div>
+                    <div class="moyenne-num" id="moyenneNum">—</div>
+                    <div class="moyenne-label">Moyenne Générale</div>
+                </div>
+                <div class="appre-badge" id="appreBadge">—</div>
+            </div>
+        </section>
+
+        <!-- ===== SECTION EMPLOI DU TEMPS ===== -->
+        <section id="sectionEmploi" class="section">
+            <div class="page-title">Emploi du Temps — S6</div>
+            <div class="timetable-wrap">
+                <div class="timetable-container" id="ttContainer"></div>
+            </div>
+            <p style="text-align:right; color:var(--muted); font-size:0.75rem; margin-top:10px;">
+                Simulation ESP Portail | LSRT-3A
+            </p>
+        </section>
+
+    </main>
+</div>
+
+<!-- ===== MODAL RÉCLAMATION ===== -->
+<div class="modal-overlay" id="reclamModal">
+    <div class="modal-box">
+        <div class="modal-head">
+            <h3>Réclamation de Note</h3>
+            <span class="modal-close" onclick="fermerReclam()">&times;</span>
+        </div>
+        <div class="modal-body">
+            <div class="modal-field">
+                <label>Matière</label>
+                <input type="text" id="reclamMatiere" class="modal-input" readonly>
+            </div>
+            <div class="modal-field">
+                <label>Votre réclamation</label>
+                <textarea id="reclamTexte" class="modal-textarea" placeholder="Expliquez votre contestation..."></textarea>
+            </div>
+            <div class="modal-field">
+                <label>Pièce jointe (optionnel)</label>
+                <input type="file" accept="image/*,application/pdf" class="modal-input" style="padding:7px;">
+            </div>
+        </div>
+        <div class="modal-foot">
+            <button class="btn-cancel" onclick="fermerReclam()">ANNULER</button>
+            <button class="btn-save"   onclick="envoyerReclam()">ENREGISTRER</button>
+        </div>
+    </div>
+</div>
+
+<!-- ===== MODAL ÉDITION PROFIL ===== -->
+<div class="edit-modal-overlay" id="editModal">
+    <div class="edit-modal-box">
+        <div class="modal-head">
+            <h3>Modifier mon profil</h3>
+            <span class="modal-close" onclick="fermerEditProfil()">&times;</span>
+        </div>
+        <div class="modal-body">
+            <div class="modal-field">
+                <label>Prénom</label>
+                <input type="text" id="editPrenom" class="modal-input">
+            </div>
+            <div class="modal-field">
+                <label>Nom</label>
+                <input type="text" id="editNom" class="modal-input">
+            </div>
+            <div class="modal-field">
+                <label>Email</label>
+                <input type="email" id="editEmail" class="modal-input">
+            </div>
+        </div>
+        <div class="modal-foot">
+            <button class="btn-cancel" onclick="fermerEditProfil()">ANNULER</button>
+            <button class="btn-save"   onclick="sauvegarderProfil()">ENREGISTRER</button>
+        </div>
+    </div>
+</div>
+
+<!-- Scripts (ordre important : data.js en premier) -->
+<script src="js/data.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/profil.js"></script>
+<script src="js/resultats.js"></script>
+<script src="js/emploi.js"></script>
+
+</body>
+</html>
