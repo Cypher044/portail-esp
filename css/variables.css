@@ -1,0 +1,25 @@
+/* ===== VARIABLES & RESET ===== */
+:root {
+    --bg: #0a0f1e;
+    --surface: #111827;
+    --surface2: #1a2540;
+    --border: #1f2d4a;
+    --accent: #3b82f6;
+    --accent2: #6366f1;
+    --green: #10b981;
+    --red: #ef4444;
+    --yellow: #f59e0b;
+    --text: #e2e8f0;
+    --muted: #64748b;
+    --sidebar-w: 230px;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+    font-family: 'Space Grotesk', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    display: flex;
+}

@@ -1,0 +1,96 @@
+/* ===== MODALES ===== */
+.modal-overlay,
+.edit-modal-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.7);
+    z-index: 100;
+    align-items: center;
+    justify-content: center;
+}
+.modal-overlay.open,
+.edit-modal-overlay.open { display: flex; }
+
+.modal-box,
+.edit-modal-box {
+    background: #f8fafc;
+    color: #1e293b;
+    border-radius: 14px;
+    width: 520px;
+    max-width: 95vw;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+    overflow: hidden;
+}
+.modal-head {
+    padding: 18px 24px;
+    border-bottom: 1px solid #e2e8f0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.modal-head h3 {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+}
+.modal-close {
+    cursor: pointer;
+    color: #94a3b8;
+    font-size: 1.3rem;
+    line-height: 1;
+}
+.modal-body { padding: 22px 24px; }
+.modal-field { margin-bottom: 18px; }
+.modal-field label {
+    display: block;
+    font-size: 0.78rem;
+    color: #64748b;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 6px;
+}
+.modal-input,
+.modal-textarea {
+    width: 100%;
+    padding: 10px 13px;
+    border: 1px solid #e2e8f0;
+    border-radius: 7px;
+    background: #f1f5f9;
+    font-family: inherit;
+    font-size: 0.88rem;
+    color: #1e293b;
+    box-sizing: border-box;
+}
+.modal-textarea { height: 130px; resize: vertical; }
+.modal-foot {
+    padding: 14px 24px;
+    border-top: 1px solid #e2e8f0;
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+}
+.btn-cancel {
+    padding: 9px 20px;
+    background: #e2e8f0;
+    color: #475569;
+    border: none;
+    border-radius: 7px;
+    cursor: pointer;
+    font-family: inherit;
+    font-weight: 600;
+    font-size: 0.85rem;
+}
+.btn-save {
+    padding: 9px 20px;
+    background: #1e293b;
+    color: white;
+    border: none;
+    border-radius: 7px;
+    cursor: pointer;
+    font-family: inherit;
+    font-weight: 600;
+    font-size: 0.85rem;
+}
+.btn-save:hover { background: #0f172a; }

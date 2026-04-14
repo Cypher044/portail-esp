@@ -1,0 +1,78 @@
+/* ===== EMPLOI DU TEMPS ===== */
+.timetable-wrap { overflow-x: auto; }
+.timetable-container {
+    display: grid;
+    grid-template-columns: 70px repeat(6, 1fr);
+    grid-template-rows: 56px repeat(12, 68px);
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+    font-size: 0.78rem;
+    min-width: 800px;
+}
+.tt-header {
+    background: var(--surface2);
+    border-bottom: 2px solid var(--border);
+    border-right: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-weight: 600;
+    text-transform: capitalize;
+    font-size: 0.82rem;
+    color: var(--text);
+}
+.tt-header.today { background: rgba(59,130,246,0.12); color: var(--accent); }
+.tt-header .dt { font-size: 0.7rem; color: var(--muted); font-weight: 400; margin-top: 2px; }
+.tt-time {
+    background: var(--surface2);
+    border-right: 2px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--muted);
+    font-weight: 600;
+    font-size: 0.75rem;
+}
+.tt-cell {
+    border-right: 1px solid var(--border);
+    border-bottom: 1px dashed rgba(31,45,74,0.8);
+}
+.course-block {
+    margin: 4px;
+    padding: 8px 10px;
+    background: rgba(59,130,246,0.08);
+    border: 1px solid rgba(59,130,246,0.25);
+    border-left: 3px solid var(--accent);
+    border-radius: 6px;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    height: calc(100% - 8px);
+    overflow: hidden;
+}
+.course-block.green  { background: rgba(16,185,129,0.08);  border-color: rgba(16,185,129,0.25);  border-left-color: var(--green); }
+.course-block.purple { background: rgba(99,102,241,0.08);  border-color: rgba(99,102,241,0.25);  border-left-color: var(--accent2); }
+.cb-title  { color: var(--accent);  font-weight: 700; font-size: 0.75rem; line-height: 1.2; }
+.course-block.green  .cb-title { color: var(--green); }
+.course-block.purple .cb-title { color: var(--accent2); }
+.cb-prof { color: var(--muted); font-size: 0.7rem; }
+.cb-room { color: var(--accent); font-size: 0.68rem; font-weight: 600; }
+
+/* Placement des cours dans la grille */
+.course-programming  { grid-column: 2; grid-row: 4 / span 2; }
+.course-archinet     { grid-column: 3; grid-row: 4 / span 2; }
+.course-techsec      { grid-column: 2; grid-row: 6 / span 2; }
+.course-radiocm      { grid-column: 3; grid-row: 6 / span 2; }
+.course-sdn-td       { grid-column: 5; grid-row: 6 / span 2; }
+.course-multimedia   { grid-column: 4; grid-row: 2 / span 2; }
+.course-projvendredi { grid-column: 6; grid-row: 2 / span 2; }
+.course-projsamedi   { grid-column: 7; grid-row: 2 / span 2; }
+.course-semistruct   { grid-column: 6; grid-row: 4 / span 2; }
+.course-sva          { grid-column: 7; grid-row: 4 / span 2; }
+.course-sdn-cm       { grid-column: 2; grid-row: 8 / span 2; }
+.course-admin-cm     { grid-column: 3; grid-row: 8 / span 2; }
+.course-veille       { grid-column: 6; grid-row: 10 / span 2; }
